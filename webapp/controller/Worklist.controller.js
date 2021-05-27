@@ -299,6 +299,38 @@ sap.ui.define([
 		
 
 		}, //end of _rowselectedUsingColumnListItem
+		
+		
+		_openhellofrag : function(){
+			
+			if(!this.hello){
+			this.hello = sap.ui.xmlfragment(this.getView().getId(),"zsapui5proj09fullscreen.fragments.HelloWorld",this);
+			this.getView().addDependent(this.hello);
+			}
+			this.hello.open();
+			
+		},//end of _openhellofrag
+		_hellook : function(){
+			this.hello.close();
+		},//end of _hellook
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 		/**
 		 * Called when the worklist controller is instantiated.

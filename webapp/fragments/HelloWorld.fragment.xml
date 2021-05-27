@@ -1,0 +1,11 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" >
+   <Dialog
+      id="helloDialog"
+      title="HelloWord">
+   	<endButton>
+   		<Button text="OK" press="_hellook" />
+   	</endButton>
+   </Dialog>
+</core:FragmentDefinition>

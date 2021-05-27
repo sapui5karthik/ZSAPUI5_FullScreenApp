@@ -41,6 +41,10 @@ xmlns:core="sap.ui.core"
 				<ToolbarSpacer/>
 				<Input width="auto"  submit="_searchcategory" placeholder="Category search..."/>
 			</Toolbar>
+				<Toolbar>
+				<ToolbarSpacer/>
+				<Button text="HelloWorld Fragment" press="_openhellofrag"/>
+			</Toolbar>
 			<Table id="sapproductstable" items="{path:'sapprod>/'}" 
 		
 			growing="true" growingThreshold="6" growingScrollToLoad="false">

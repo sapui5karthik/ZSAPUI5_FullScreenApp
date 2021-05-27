@@ -1,0 +1,39 @@
+<mvc:View controllerName="zsapui5proj09fullscreen.controller.Object" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<semantic:FullscreenPage id="page" semanticRuleSet="Optimized" title="I AM IN THE OFFICE NOW" busy="{objectView>/busy}"
+		busyIndicatorDelay="{objectView>/delay}">
+		<semantic:content>
+			<Button text="Back to Worklist" press="_toworklist"/>
+			<VBox class="sapUiSmallMargin">
+				<f:SimpleForm id="SimpleFormChange354" editable="true" layout="ResponsiveGridLayout" title="" labelSpanXL="3" labelSpanL="3"
+					labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1"
+					columnsL="1" columnsM="1" singleContainerFullSize="false">
+					<f:content>
+						<Label text="ProductID"/><ObjectStatus state="Success" text="{/ProductID}"/>
+					<Label text="TypeCode"/><ObjectStatus state="Success" text="{/TypeCode}"/>
+					<Label text="Category"/><ObjectStatus state="Success" text="{/Category}"/>
+					<Label text="Name"/><ObjectStatus state="Success" text="{/Name}"/>
+					<Label text="NameLanguage"/><ObjectStatus state="Success" text="{/NameLanguage}"/>
+					<Label text="Description"/><ObjectStatus state="Success" text="{/Description}"/>
+					<Label text="SupplierID"/><ObjectStatus state="Success" text="{/SupplierID}"/>
+					<Label text="SupplierName"/><ObjectStatus state="Success" text="{/SupplierName}"/>
+					<Label text="CurrencyCode"/><ObjectStatus state="Success" text="{/CurrencyCode}"/>
+					<Label text="Width"/><ObjectStatus state="Success" text="{/Width}"/>
+					<Label text="Depth"/><ObjectStatus state="Success" text="{/Depth}"/>
+					<Label text="CreatedAt"/><ObjectStatus state="Success" text="{/CreatedAt}"/>
+					
+					</f:content>
+				</f:SimpleForm>
+			</VBox>
+		</semantic:content>
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+		</semantic:shareInJamAction>
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id="shareTile" title="{objectView>/saveAsTileTitle}"/>
+		</semantic:saveAsTileAction>
+	</semantic:FullscreenPage>
+</mvc:View>

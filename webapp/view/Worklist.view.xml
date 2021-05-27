@@ -1,0 +1,99 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" 
+xmlns:footerbar="sap.ushell.ui.footerbar" controllerName="zsapui5proj09fullscreen.controller.Worklist"
+xmlns:core="sap.ui.core"
+	>
+	<semantic:FullscreenPage id="page" semanticRuleSet="Optimized" title="{i18n>worklistViewTitle}">
+		<semantic:content>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button text="Order By Price Asc" width="auto" press="_orderByPriceAsc"/>
+				<Button text="Order By Price Desc" width="auto" press="_orderByPriceDesc"/>
+				<Button press="_refresh" icon="sap-icon://refresh" type="Emphasized"/>
+			</Toolbar>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<!--<Select>
+					
+				</Select>-->
+				<!-- Static ComboBox-->
+				<ComboBox id="staticcomboid" change="_staticdatacombo">
+					<items>
+						<core:Item key="0" text=""/>
+						<core:Item key="1" text="Order By Price Asc"/>
+						<core:Item key="2" text="Order By Price Desc"/>
+						
+					</items>
+				</ComboBox>
+				<!-- Dynamic ComboBox-->
+				<ComboBox id="dynamiccomboid" change="_dynamiccombo" items="{path:'cbprod>/'}">
+					<items>
+						<core:Item key="" text="{cbprod>ProductID}"/>
+					</items>
+				</ComboBox>
+			</Toolbar>
+			<Toolbar>
+				<ToolbarSpacer />
+				<Button text="Price le 1" press="_priceLessThanOrEqualTo1" />
+				<Button text="Category eq Trays" press="_categoryEqualToTrays" />
+				<Button text="Category Trays and Price 3.20" press="_categoryTraysAndPrice320" />
+			</Toolbar>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Input width="auto"  submit="_searchcategory" placeholder="Category search..."/>
+			</Toolbar>
+			<Table id="sapproductstable" items="{path:'sapprod>/'}" 
+		
+			growing="true" growingThreshold="6" growingScrollToLoad="false">
+				<columns>
+					<Column width="30px">
+						<Text text="Sel"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>pid}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>tc}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>cat}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>n1}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>p1}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>w1}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>c1}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press="_rowselectedUsingColumnListItem">
+						<cells>
+							<RadioButton id="idrad1" select="_rowselected"/>
+							<ObjectStatus state="Success" text="{sapprod>ProductID}"/>
+							<Text text="{sapprod>TypeCode}"/>
+							<Text text="{sapprod>Category}"/>
+							<Text text="{sapprod>Name}"/>
+							<Text text="{sapprod>Price}"/>
+							<Text text="{sapprod>Width} {sapprod&gt;DimUnit}"/>
+							<Text text="{sapprod>CreatedAt}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+		</semantic:shareInJamAction>
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id="shareTile" title="{worklistView>/saveAsTileTitle}"/>
+		</semantic:saveAsTileAction>
+	</semantic:FullscreenPage>
+</mvc:View>
